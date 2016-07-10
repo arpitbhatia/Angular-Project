@@ -1,0 +1,18 @@
+<form name="form" class="css-form" novalidate>
+<label>Search Account: 
+	<input type="number" name="accNumber" min="0" max="9999999999"
+            ng-model="accNumber" integer ></input>
+</label>
+</form>
+
+<span ng-show="form.accNumber.$error.min || form.accNumber.$error.max">
+      Account number should be 10 digit number</span>
+
+<table id="searchTextResults">
+  <tr><th>Account Information</th></tr>
+  <tr><th>First Name</th><th>Last Name</th></tr>
+  <tr ng-repeat="account in accountList | filter:accNumber">
+    <td>{{account.firstName}}</td>
+    <td>{{account.lastName}}</td>
+  </tr>
+</table>
